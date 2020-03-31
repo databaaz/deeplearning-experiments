@@ -1,0 +1,18 @@
+name: dlcv
+channels:
+    - https://conda.anaconda.org/menpo
+    - conda-forge
+dependencies:
+    - python3
+    - numpy
+    - tensorflow==2.0.0 # or tensorflow-gpu
+    - opencv-contrib-python
+    - scikit-image
+    - pillow
+    - imutils
+    - scikit-learn
+    - matplotlib
+    - progressbar2
+    - beautifulsoup4
+    - pandas
+
