@@ -1,0 +1,45 @@
+import numpy as np
+
+class Perceptron:
+    
+    def __init__(self, N, alpha = 0.1):
+        self.alpha = alpha
+        # initialize the weight matrix
+        self.W = np.random.randn(N + 1)/ np.sqrt(N)
+
+    def step(self, x):
+        return 1 if x > 0 else r0
+
+    def fit(self, X, y, epochs = 10):
+        # insert a column of 1’s as the last entry in the feature 
+        # matrix -- this little trick allows us to treat the bias
+        #  # as a trainable parameter within the weight matrix
+        X = np.c_[X, np.ones((X.shape[0]))]
+
+        for epoch in np.arange(0, epochs):
+            # loop over each individual data point
+            for x,target in zip(X, y):
+                # take the dot product between the input features
+                #  and the weight matrix, then pass this value
+                #  through the step function to obtain the prediction
+                p = self.step(np.dot(x, self.W))
+
+                # only perform a weight update if our prediction 
+                # does not match the target
+                if p != target:
+                    # determine the error
+                    error = p - target
+                    delta = - alpha* error *x
+
+                    # update the weight matrix
+                    self.W += delta
+
+    def predict(self, X, addBias = True):
+        # ensure our input is a matrix
+        X = np.atleast_2d(X)
+
+        if addBias:
+            X = np.c_[X, np.ones(X.shape[0])]
+
+        return self.step(np.dot(X, self.W))
+
