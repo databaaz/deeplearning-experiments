@@ -8,7 +8,7 @@ class Perceptron:
         self.W = np.random.randn(N + 1)/ np.sqrt(N)
 
     def step(self, x):
-        return 1 if x > 0 else r0
+        return 1 if x > 0 else 0
 
     def fit(self, X, y, epochs = 10):
         # insert a column of 1’s as the last entry in the feature 
@@ -29,7 +29,7 @@ class Perceptron:
                 if p != target:
                     # determine the error
                     error = p - target
-                    delta = - alpha* error *x
+                    delta = - self.alpha* error *x
 
                     # update the weight matrix
                     self.W += delta
